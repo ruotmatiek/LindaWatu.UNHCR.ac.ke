@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a4b5c" />
+  <meta name="description" content="Linda Watu — Humanitarian healthcare platform for refugees." />
+  <title>Linda Watu · Humanitarian Healthcare Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar" role="banner">
+    <a href="#portal" class="brand" aria-label="Linda Watu home">
+      <span class="brand-icon"><i class="fas fa-shield-heart"></i></span>
+      <span class="brand-text">
+        <strong>LINDA WATU</strong>
+        <small>Protecting lives, connecting people.</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <button class="nav-step active" data-step="portal" type="button"><span>1</span> Portal</button>
+      <button class="nav-step" data-step="signin" type="button"><span>2</span> Sign in</button>
+      <button class="nav-step" data-step="verify" type="button"><span>3</span> Verify</button>
+    </nav>
+    <span class="offline-badge" id="offline-badge" title="Offline mode">
+      <i class="fas fa-wifi"></i> Online
+    </span>
+  </header>
+
+  <main class="app" id="app">
+
+    <!-- ================= STEP 1 · PORTAL ================= -->
+    <section class="step active" id="step-portal" aria-labelledby="portal-title">
+      <h1 id="portal-title" class="step-title">Choose your portal</h1>
+      <p class="step-sub">Select how you want to continue. In an emergency, call <strong>112</strong> or <strong>999</strong> immediately.</p>
+
+      <div class="portal-grid">
+        <button class="portal-card" data-portal="patient" type="button">
+          <i class="fas fa-user-injured"></i>
+          <h2>Patient</h2>
+          <p>Refugee or family member. Book doctors, request home visits, manage medicines, and get help.</p>
+          <span class="portal-cta">Continue <i class="fas fa-arrow-right"></i></span>
+        </button>
+
+        <button class="portal-card" data-portal="doctor" type="button">
+          <i class="fas fa-user-md"></i>
+          <h2>Doctor</h2>
+          <p>Healthcare professional. Review requests, translate consultations, and issue prescriptions.</p>
+          <span class="portal-cta">Continue <i class="fas fa-arrow-right"></i></span>
+        </button>
+
+        <button class="portal-card" data-portal="nurse" type="button">
+          <i class="fas fa-user-nurse"></i>
+          <h2>Nurse</h2>
+          <p>Support consultations, triage, and record vital signs for assigned patients.</p>
+          <span class="portal-cta">Continue <i class="fas fa-arrow-right"></i></span>
+        </button>
+
+        <button class="portal-card" data-portal="caregiver" type="button">
+          <i class="fas fa-people-roof"></i>
+          <h2>Caregiver</h2>
+          <p>Assist an authorized patient with appointments, medicines and recovery.</p>
+          <span class="portal-cta">Continue <i class="fas fa-arrow-right"></i></span>
+        </button>
+
+        <button class="portal-card" data-portal="admin" type="button">
+          <i class="fas fa-user-shield"></i>
+          <h2>Admin</h2>
+          <p>Authorized humanitarian administrator. Monitor services, protection cases and public health.</p>
+          <span class="portal-cta">Continue <i class="fas fa-arrow-right"></i></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= STEP 2 · SIGN IN ================= -->
+    <section class="step" id="step-signin" aria-labelledby="signin-title">
+      <h1 id="signin-title" class="step-title">Sign in</h1>
+      <p class="step-sub" id="signin-sub">Signing in to the <strong id="signin-portal-label">Patient</strong> portal.</p>
+
+      <form id="signin-form" class="signin-form" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          <small class="field-error" id="email-error" role="alert"></small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
+            <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Show password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="field-error" id="password-error" role="alert"></small>
+        </div>
+
+        <button type="submit" class="btn primary" id="signin-btn">
+          <i class="fas fa-sign-in-alt"></i> Sign in
+        </button>
+
+        <div class="demo-logins" aria-label="Demo credentials">
+          <p><strong>Demo logins</strong></p>
+          <p><strong>Patient:</strong> patient@lindawatu.demo / Patient@123</p>
+          <p><strong>Doctor:</strong> doctor@lindawatu.demo / Doctor@123</p>
+          <p><strong>Nurse:</strong> nurse@lindawatu.demo / Nurse@123</p>
+          <p><strong>Caregiver:</strong> caregiver@lindawatu.demo / Caregiver@123</p>
+          <p><strong>Admin:</strong> admin@lindawatu.demo / Admin@123</p>
+        </div>
+
+        <p class="disclaimer">
+          Demonstration prototype with synthetic data only. Not an official UNHCR or WHO product.
+          In an emergency call <strong>112</strong> or <strong>999</strong>.
+        </p>
+      </form>
+
+      <button class="btn ghost back-btn" data-step="portal" type="button">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+    </section>
+
+    <!-- ================= STEP 3 · VERIFY ================= -->
+    <section class="step" id="step-verify" aria-labelledby="verify-title">
+      <h1 id="verify-title" class="step-title">Verify</h1>
+      <p class="step-sub">Confirm your identity to continue. Registration checks never delay emergency care.</p>
+
+      <div class="verify-card">
+        <i class="fas fa-fingerprint verify-icon"></i>
+        <p id="verify-message">Please wait…</p>
+        <div class="verify-progress"><div class="verify-bar" id="verify-bar"></div></div>
+        <button class="btn primary" id="verify-continue-btn" type="button" disabled>
+          <i class="fas fa-check"></i> Continue to dashboard
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= PATIENT DASHBOARD ================= -->
+    <section class="dashboard" id="patient-dashboard" aria-hidden="true">
+      <div class="dash-header">
+        <div class="dash-user">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <strong id="patient-name">James Bol (Ref-2026-001)</strong>
+            <span class="badge success" id="patient-status">Verified</span>
+          </div>
+        </div>
+        <button class="btn ghost small" data-logout="patient" type="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+      <p class="dash-greeting"><i class="fas fa-hand-sparkles"></i> How can we help?</p>
+
+      <!-- REGISTRATION STATUS -->
+      <div class="card" id="patient-registration-status">
+        <h3><i class="fas fa-id-card"></i> Registration status</h3>
+        <div class="status-row">
+          <span class="status-chip verified">✅ Verified</span>
+          <span class="status-chip pending">⏳ Pending verification</span>
+          <span class="status-chip required">⚠️ Verification required</span>
+          <span class="status-chip rejected">❌ Rejected</span>
+        </div>
+        <p class="warning"><i class="fas fa-info-circle"></i> Identity verification never delays emergency medical assistance.</p>
+      </div>
+
+      <!-- MY PROFILE -->
+      <div class="card" id="patient-profile">
+        <h3><i class="fas fa-address-card"></i> My profile</h3>
+        <form id="profile-form" class="stack">
+          <div class="row">
+            <div class="field"><label for="p-name">Full name</label><input id="p-name" value="James Bol" /></div>
+            <div class="field"><label for="p-dob">Date of birth</label><input type="date" id="p-dob" value="1990-05-12" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="p-gender">Gender</label><select id="p-gender"><option>Male</option><option>Female</option><option>Other</option></select></div>
+            <div class="field"><label for="p-nationality">Nationality</label><input id="p-nationality" value="South Sudanese" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="p-camp">Camp / settlement</label><input id="p-camp" value="Kakuma" /></div>
+            <div class="field"><label for="p-block">Block / zone</label><input id="p-block" value="Block 4 · Zone B" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="p-household">Household</label><input id="p-household" value="5 members" /></div>
+            <div class="field"><label for="p-phone">Telephone</label><input id="p-phone" value="Number" /></div>
+          </div>
+          <div class="field"><label for="p-emergency-contact">Emergency contact</label><input id="p-emergency-contact" value="Mary Bol · +254 711 111 111" /></div>
+          <div class="field"><label for="p-lang">Preferred language</label>
+            <select id="p-lang">
+              <option>Arabic</option><option>Kiswahili</option><option>English</option>
+              <option>Somali</option><option>Turkana</option><option>Nuer</option>
+              <option>Dinka</option><option>Amharic</option><option>French</option>
+            </select>
+          </div>
+          <div class="field"><label for="p-accessibility">Accessibility requirements</label><input id="p-accessibility" placeholder="e.g. wheelchair, hearing support" /></div>
+          <div class="field"><label for="p-conditions">Existing medical conditions</label><textarea id="p-conditions" rows="2">Hypertension</textarea></div>
+          <div class="field"><label for="p-allergies">Allergies</label><textarea id="p-allergies" rows="2">Penicillin</textarea></div>
+          <div class="field"><label for="p-medication">Current medication</label><textarea id="p-medication" rows="2">Amlodipine 5 mg daily</textarea></div>
+          <button class="btn primary" type="submit"><i class="fas fa-save"></i> Save profile</button>
+        </form>
+      </div>
+
+      <!-- MY CARETAKER -->
+      <div class="card" id="patient-caretaker">
+        <h3><i class="fas fa-people-roof"></i> My caretaker</h3>
+        <form id="caretaker-form" class="stack">
+          <div class="row">
+            <div class="field"><label for="c-name">Caretaker name</label><input id="c-name" value="Mary Nyakuoth" /></div>
+            <div class="field"><label for="c-id">Caretaker ID</label><input id="c-id" value="CG-2026-0091" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="c-phone">Caretaker phone</label><input id="c-phone" value="+254 759399773" /></div>
+            <div class="field"><label for="c-gender">Caretaker gender</label><select id="c-gender"><option>Female</option><option>Male</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label for="c-relationship">Relationship with patient</label><input id="c-relationship" value="Spouse" /></div>
+          <button class="btn primary" type="submit"><i class="fas fa-save"></i> Save caretaker</button>
+        </form>
+      </div>
+
+      <!-- BOOK A DOCTOR -->
+      <div class="card" id="patient-book">
+        <h3><i class="fas fa-calendar-check"></i> Book a doctor or home visit</h3>
+        <form id="book-form" class="stack">
+          <div class="field"><label for="book-type">Visit type</label>
+            <select id="book-type"><option value="clinic">Clinic consultation</option><option value="home">Home visit</option></select>
+          </div>
+          <div class="field"><label for="book-dept">Department</label>
+            <select id="book-dept">
+              <option>General medicine</option><option>Maternal health</option><option>Child health</option>
+              <option>Mental health</option><option>Dermatology</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="field"><label for="book-date">Date</label><input type="date" id="book-date" required /></div>
+            <div class="field"><label for="book-time">Time</label><input type="time" id="book-time" required /></div>
+          </div>
+          <div class="field"><label for="book-reason">What is the problem?</label>
+            <textarea id="book-reason" rows="3" placeholder="Describe your symptoms…" required></textarea>
+          </div>
+          <button class="btn primary" type="submit"><i class="fas fa-paper-plane"></i> Send request</button>
+        </form>
+        <div class="list" id="book-list"><h4>My requests</h4><ul></ul></div>
+      </div>
+
+      <!-- TALK TO A DOCTOR (with voice translation) -->
+      <div class="card" id="patient-talk">
+        <h3><i class="fas fa-comment-medical"></i> Talk to a doctor</h3>
+        <div class="row">
+          <div class="field"><label for="talk-lang">My language</label>
+            <select id="talk-lang">
+              <option>Arabic</option><option>Kiswahili</option><option>English</option>
+              <option>Somali</option><option>Turkana</option><option>Nuer</option>
+              <option>Dinka</option><option>Amharic</option><option>French</option>
+            </select>
+          </div>
+          <div class="field"><label for="talk-target">Doctor's language</label>
+            <select id="talk-target">
+              <option>English</option><option>Kiswahili</option><option>Arabic</option><option>French</option>
+            </select>
+          </div>
+        </div>
+        <div class="chat" id="chat-window" aria-live="polite">
+          <div class="msg doctor"><span>Doctor (English):</span> Hello James, how are you feeling today?</div>
+          <div class="msg patient"><span>You (Arabic):</span> أشعر بألم في الصدر</div>
+          <div class="msg ai"><span><i class="fas fa-robot"></i> AI translation:</span> "I feel pain in my chest."</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chat-input" placeholder="Type your message…" />
+          <button class="btn primary" id="mic-btn" type="button" title="Voice input (demo)"><i class="fas fa-microphone"></i></button>
+          <button class="btn primary" id="speaker-btn" type="button" title="Play translation (demo)"><i class="fas fa-volume-high"></i></button>
+          <button class="btn primary" id="chat-send" type="button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <p class="warning"><i class="fas fa-triangle-exclamation"></i> AI translation can be wrong. For serious advice, ask for a human interpreter.</p>
+        <p class="hint"><i class="fas fa-info-circle"></i> Voice input simulated: type your message, then click the microphone to simulate mother-tongue speech → translated to doctor's language.</p>
+      </div>
+
+      <!-- MY MEDICINES -->
+      <div class="card" id="patient-meds">
+        <h3><i class="fas fa-prescription"></i> My medicines</h3>
+        <ul class="med-list" id="med-list">
+          <li>
+            <div><strong>Amoxicillin</strong> · 500 mg · 3× daily</div>
+            <div class="med-actions">
+              <button class="btn small success" data-med="taken" type="button">I have taken my medicine</button>
+              <button class="btn small ghost" data-med="later" type="button">Remind me later</button>
+              <button class="btn small danger" data-med="missed" type="button">I missed my medicine</button>
+            </div>
+          </li>
+        </ul>
+        <h4>History</h4>
+        <ul class="history" id="med-history"></ul>
+      </div>
+
+      <!-- VISITOR MANAGEMENT -->
+      <div class="card" id="patient-visitors">
+        <h3><i class="fas fa-users"></i> Visitor management</h3>
+        <form id="visitor-form" class="stack">
+          <div class="row">
+            <div class="field"><label for="v-name">Visitor full name</label><input id="v-name" required /></div>
+            <div class="field"><label for="v-id">Identification</label><input id="v-id" placeholder="ID number (where required)" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="v-phone">Telephone</label><input id="v-phone" required /></div>
+            <div class="field"><label for="v-relationship">Relationship</label><input id="v-relationship" placeholder="e.g. Brother" required /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="v-date">Visit date</label><input type="date" id="v-date" required /></div>
+            <div class="field"><label for="v-time">Preferred time</label><input type="time" id="v-time" required /></div>
+          </div>
+          <div class="field"><label for="v-reason">Reason for visit</label><input id="v-reason" /></div>
+          <button class="btn primary" type="submit"><i class="fas fa-id-badge"></i> Register visitor</button>
+        </form>
+        <h4>Visitor passes</h4>
+        <ul class="visitor-list" id="visitor-list"></ul>
+        <p class="hint"><i class="fas fa-clock"></i> Visiting hours: 08:00–18:00. Exceptions for emergencies and compassionate circumstances.</p>
+      </div>
+
+      <!-- REPORT MISCONDUCT + UNHCR escalation -->
+      <div class="card" id="patient-report">
+        <h3><i class="fas fa-exclamation-triangle"></i> Report healthcare misconduct or unauthorized payment</h3>
+        <form id="report-form" class="stack">
+          <div class="field"><label for="report-what">What happened?</label>
+            <select id="report-what">
+              <option>Demand for money for a free service</option>
+              <option>Denied treatment unfairly</option>
+              <option>Discrimination</option>
+              <option>Harassment</option>
+              <option>Negligence or abuse</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="report-facility">Facility or place</label>
+            <input type="text" id="report-facility" placeholder="e.g. Kakuma Main Hospital" />
+          </div>
+          <div class="field"><label for="report-details">Details</label>
+            <textarea id="report-details" rows="3" placeholder="Describe what happened…" required></textarea>
+          </div>
+          <label class="checkbox"><input type="checkbox" id="report-anon" /> Report anonymously</label>
+          <p class="warning"><i class="fas fa-lock"></i> We protect your identity, but we cannot promise absolute anonymity.</p>
+          <button class="btn primary" type="submit"><i class="fas fa-shield-halved"></i> Submit report</button>
+        </form>
+
+        <div class="unhcr-escalate">
+          <h4><i class="fas fa-building-shield"></i> Escalate directly to UNHCR</h4>
+          <p>If a hospital demands money for a free service, you can escalate this case to UNHCR authorities.</p>
+          <div class="unhcr-actions">
+            <a class="btn small danger" href="tel:+254207624000"><i class="fas fa-phone"></i> Call UNHCR Kenya</a>
+            <a class="btn small danger" href="mailto:kenyaka@unhcr.org"><i class="fas fa-envelope"></i> Email UNHCR</a>
+            <button class="btn small danger" id="unhcr-copy" type="button"><i class="fas fa-copy"></i> Copy case reference</button>
+          </div>
+        </div>
+
+        <div class="list" id="case-list"><h4>My cases</h4><ul></ul></div>
+      </div>
+
+      <!-- EMERGENCY -->
+      <div class="card danger-card" id="patient-emergency">
+        <h3><i class="fas fa-ambulance"></i> Emergency help</h3>
+        <p>If you are in danger, call <strong>112</strong> or <strong>999</strong> now. This app does not replace emergency services.</p>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" class="emergency-sign" /> Difficulty breathing</label>
+          <label><input type="checkbox" class="emergency-sign" /> Heavy bleeding</label>
+          <label><input type="checkbox" class="emergency-sign" /> Unconscious or fitting</label>
+          <label><input type="checkbox" class="emergency-sign" /> Pregnancy emergency</label>
+        </div>
+        <div class="field">
+          <label for="emergency-desc">Describe what is happening</label>
+          <textarea id="emergency-desc" rows="2"></textarea>
+        </div>
+        <button class="btn danger" id="emergency-send" type="button">
+          <i class="fas fa-bell"></i> Activate emergency response
+        </button>
+      </div>
+
+      <!-- MATERNAL & CHILD HEALTH -->
+      <div class="card" id="patient-maternal">
+        <h3><i class="fas fa-baby"></i> Maternal & child health</h3>
+        <div class="row">
+          <div class="field"><label for="mat-edd">Expected delivery date</label><input type="date" id="mat-edd" /></div>
+          <div class="field"><label for="mat-week">Week</label><input type="number" id="mat-week" min="1" max="42" value="24" /></div>
+        </div>
+        <ul class="simple-list">
+          <li><i class="fas fa-calendar-check"></i> Antenatal appointment reminders</li>
+          <li><i class="fas fa-syringe"></i> Child vaccination reminders</li>
+          <li><i class="fas fa-chart-line"></i> Child growth monitoring</li>
+          <li><i class="fas fa-triangle-exclamation"></i> Emergency pregnancy warning signs</li>
+          <li><i class="fas fa-hospital"></i> Referral to qualified maternity services</li>
+        </ul>
+        <button class="btn primary" type="button" id="mat-save"><i class="fas fa-save"></i> Save pregnancy record</button>
+      </div>
+
+      <!-- MENTAL HEALTH -->
+      <div class="card" id="patient-mental">
+        <h3><i class="fas fa-brain"></i> Mental health & psychosocial support</h3>
+        <p>Confidential, culturally sensitive support available in your language.</p>
+        <ul class="simple-list">
+          <li><i class="fas fa-comment-dots"></i> Request a mental health consultation</li>
+          <li><i class="fas fa-user-doctor"></i> Speak to a trained counsellor</li>
+          <li><i class="fas fa-heart"></i> Stress management education</li>
+          <li><i class="fas fa-hands-holding-circle"></i> Trauma-informed support resources</li>
+          <li><i class="fas fa-arrow-up-right-dots"></i> Crisis escalation pathways</li>
+        </ul>
+        <button class="btn primary" type="button" id="mental-request"><i class="fas fa-hand-holding-heart"></i> Request support</button>
+      </div>
+
+      <!-- HEALTH EDUCATION -->
+      <div class="card" id="patient-education">
+        <h3><i class="fas fa-book-open"></i> Health education centre</h3>
+        <div class="field"><label for="edu-lang">Language</label>
+          <select id="edu-lang">
+            <option>English</option><option>Kiswahili</option><option>Arabic</option>
+            <option>Somali</option><option>Turkana</option><option>Nuer</option><option>Dinka</option>
+          </select>
+        </div>
+        <div class="grid-buttons education-grid">
+          <button class="grid-btn" data-edu="Maternal health" type="button"><i class="fas fa-baby"></i> Maternal health</button>
+          <button class="grid-btn" data-edu="Child healthcare" type="button"><i class="fas fa-child"></i> Child healthcare</button>
+          <button class="grid-btn" data-edu="Nutrition" type="button"><i class="fas fa-apple-whole"></i> Nutrition</button>
+          <button class="grid-btn" data-edu="Mental health" type="button"><i class="fas fa-brain"></i> Mental health</button>
+          <button class="grid-btn" data-edu="Malaria prevention" type="button"><i class="fas fa-mosquito"></i> Malaria</button>
+          <button class="grid-btn" data-edu="Cholera prevention" type="button"><i class="fas fa-droplet"></i> Cholera</button>
+          <button class="grid-btn" data-edu="HIV education" type="button"><i class="fas fa-ribbon"></i> HIV</button>
+          <button class="grid-btn" data-edu="Tuberculosis" type="button"><i class="fas fa-lungs"></i> TB</button>
+          <button class="grid-btn" data-edu="Vaccination" type="button"><i class="fas fa-syringe"></i> Vaccination</button>
+          <button class="grid-btn" data-edu="Reproductive health" type="button"><i class="fas fa-venus-mars"></i> Reproductive</button>
+          <button class="grid-btn" data-edu="Hygiene & sanitation" type="button"><i class="fas fa-hands-bubbles"></i> Hygiene</button>
+          <button class="grid-btn" data-edu="Medication safety" type="button"><i class="fas fa-pills"></i> Medication safety</button>
+        </div>
+        <div class="list" id="edu-list"><h4>Recently viewed</h4><ul></ul></div>
+      </div>
+
+      <!-- DISCHARGE POLICY -->
+      <div class="card" id="patient-discharge">
+        <h3><i class="fas fa-notes-medical"></i> Patient discharge policy</h3>
+        <ul class="simple-list">
+          <li><i class="fas fa-check"></i> Discharge only after clinical stabilization and doctor approval.</li>
+          <li><i class="fas fa-file-medical"></i> Written discharge summary issued to the patient or caretaker.</li>
+          <li><i class="fas fa-pills"></i> Medication and follow-up instructions explained in the patient's language.</li>
+          <li><i class="fas fa-phone"></i> Follow-up contact scheduled and confirmed.</li>
+          <li><i class="fas fa-shield-heart"></i> Referral or transport arranged if required.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= DOCTOR DASHBOARD ================= -->
+    <section class="dashboard" id="doctor-dashboard" aria-hidden="true">
+      <div class="dash-header">
+        <div class="dash-user">
+          <i class="fas fa-user-md"></i>
+          <div>
+            <strong>Dr. James (DOC-001)</strong>
+            <span class="badge success">Online</span>
+          </div>
+        </div>
+        <button class="btn ghost small" data-logout="doctor" type="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+      <!-- REQUESTS -->
+      <div class="card" id="doctor-requests">
+        <h3><i class="fas fa-inbox"></i> Appointment and home visit requests</h3>
+        <ul class="request-list" id="request-list">
+          <li>
+            <div><strong>James Bol (Ref-2026-001)</strong> · Home visit · 2 days ago</div>
+            <div class="req-actions">
+              <button class="btn small success" type="button" data-req="accept">Accept</button>
+              <button class="btn small danger" type="button" data-req="reject">Reject</button>
+              <button class="btn small ghost" type="button" data-req="info">Request info</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MESSAGES + TRANSLATION -->
+      <div class="card" id="doctor-messages">
+        <h3><i class="fas fa-comments"></i> Patient messages</h3>
+        <div class="row">
+          <div class="field"><label for="doctor-lang">Show messages in</label>
+            <select id="doctor-lang">
+              <option>English</option><option>Kiswahili</option><option>Arabic</option>
+              <option>Somali</option><option>Turkana</option><option>Nuer</option>
+              <option>Dinka</option><option>Amharic</option><option>French</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="doctor-target">Translate to</label>
+            <select id="doctor-target">
+              <option>English</option><option>Kiswahili</option><option>Arabic</option><option>French</option>
+            </select>
+          </div>
+        </div>
+        <div class="chat" id="doctor-chat">
+          <div class="msg patient"><span>Patient (Arabic):</span> أشعر بألم في الصدر</div>
+          <div class="msg ai"><span><i class="fas fa-robot"></i> Translation (English):</span> "I feel pain in my chest."</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="doctor-chat-input" placeholder="Reply in English…" />
+          <button class="btn primary" id="doctor-mic-btn" type="button" title="Voice input (demo)"><i class="fas fa-microphone"></i></button>
+          <button class="btn primary" id="doctor-speaker-btn" type="button" title="Play translation (demo)"><i class="fas fa-volume-high"></i></button>
+          <button class="btn primary" id="doctor-chat-send" type="button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="translate-bar">
+          <button class="btn small" data-translate="English" type="button">English</button>
+          <button class="btn small" data-translate="Kiswahili" type="button">Kiswahili</button>
+          <button class="btn small" data-translate="Arabic" type="button">Arabic</button>
+          <button class="btn small" data-translate="Somali" type="button">Somali</button>
+          <button class="btn small" data-translate="Turkana" type="button">Turkana</button>
+          <button class="btn small" data-translate="Nuer" type="button">Nuer</button>
+          <button class="btn small" data-translate="Dinka" type="button">Dinka</button>
+          <button class="btn small" data-translate="Other" type="button">Other</button>
+        </div>
+        <p class="warning"><i class="fas fa-triangle-exclamation"></i> Translations are a demo aid. Do not rely on them for high-risk decisions. Ask the patient to confirm critical instructions.</p>
+      </div>
+
+      <!-- CLINICAL ACTIONS -->
+      <div class="card" id="doctor-clinical">
+        <h3><i class="fas fa-stethoscope"></i> Clinical actions</h3>
+        <div class="grid-buttons">
+          <button class="grid-btn" data-clinical="Review symptoms" type="button"><i class="fas fa-notes-medical"></i> Review symptoms</button>
+          <button class="grid-btn" data-clinical="Review medical history" type="button"><i class="fas fa-file-medical"></i> Medical history</button>
+          <button class="grid-btn" data-clinical="Request lab investigation" type="button"><i class="fas fa-flask"></i> Request lab</button>
+          <button class="grid-btn" data-clinical="Refer to hospital" type="button"><i class="fas fa-ambulance"></i> Refer to hospital</button>
+          <button class="grid-btn" data-clinical="Schedule follow-up" type="button"><i class="fas fa-calendar-plus"></i> Schedule follow-up</button>
+          <button class="grid-btn" data-clinical="Recommend in-person exam" type="button"><i class="fas fa-user-doctor"></i> In-person exam</button>
+          <button class="grid-btn" data-clinical="Monitor progress" type="button"><i class="fas fa-chart-line"></i> Monitor progress</button>
+          <button class="grid-btn" data-clinical="Request more information" type="button"><i class="fas fa-circle-question"></i> Request info</button>
+        </div>
+        <div class="list" id="clinical-log"><h4>Action log</h4><ul></ul></div>
+      </div>
+
+      <!-- PRESCRIPTION -->
+      <div class="card" id="doctor-prescribe">
+        <h3><i class="fas fa-prescription-bottle-medical"></i> Write a prescription</h3>
+        <form id="prescription-form" class="stack">
+          <div class="field"><label for="rx-medicine">Medicine</label>
+            <input type="text" id="rx-medicine" required placeholder="e.g. Amoxicillin" />
+          </div>
+          <div class="row">
+            <div class="field"><label for="rx-dosage">Dosage</label>
+              <input type="text" id="rx-dosage" required placeholder="e.g. 500 mg" /></div>
+            <div class="field"><label for="rx-frequency">Frequency</label>
+              <select id="rx-frequency">
+                <option>1× daily</option><option>2× daily</option>
+                <option>3× daily</option><option>4× daily</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="rx-quantity">Quantity (tablets)</label>
+              <input type="number" id="rx-quantity" min="1" value="15" /></div>
+            <div class="field"><label for="rx-first">First dose time</label>
+              <input type="time" id="rx-first" required /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="rx-duration">Duration (days)</label>
+              <input type="number" id="rx-duration" min="1" max="90" value="5" required /></div>
+            <div class="field"><label for="rx-doctor">Prescribing doctor</label>
+              <input type="text" id="rx-doctor" value="Dr. James (DOC-001)" readonly /></div>
+          </div>
+          <div class="field"><label for="rx-notes">Special instructions</label>
+            <textarea id="rx-notes" rows="2"></textarea>
+          </div>
+          <button class="btn primary" type="submit"><i class="fas fa-prescription"></i> Issue prescription</button>
+        </form>
+        <div class="list" id="rx-issued"><h4>Issued</h4><ul></ul></div>
+      </div>
+
+      <!-- OUTBREAK MONITOR -->
+      <div class="card" id="doctor-outbreak">
+        <h3><i class="fas fa-virus"></i> Disease outbreak monitoring</h3>
+        <p class="hint"><i class="fas fa-info-circle"></i> Anonymized & aggregated data. Authorized public health professionals must verify outbreaks before any official declaration.</p>
+        <ul class="outbreak-list">
+          <li><span>Cholera</span><strong>12</strong><span class="trend up">▲ +4</span></li>
+          <li><span>Malaria</span><strong>38</strong><span class="trend up">▲ +9</span></li>
+          <li><span>Measles</span><strong>3</strong><span class="trend down">▼ −1</span></li>
+          <li><span>Tuberculosis</span><strong>7</strong><span class="trend flat">→ 0</span></li>
+          <li><span>Respiratory infections</span><strong>21</strong><span class="trend up">▲ +3</span></li>
+          <li><span>Diarrhoeal diseases</span><strong>15</strong><span class="trend up">▲ +2</span></li>
+        </ul>
+        <button class="btn primary" type="button" id="outbreak-alert-btn">
+          <i class="fas fa-bullhorn"></i> Flag unusual increase for review
+        </button>
+      </div>
+
+      <!-- EMERGENCY ALERTS -->
+      <div class="card danger-card" id="doctor-emergency">
+        <h3><i class="fas fa-bell"></i> Emergency alerts</h3>
+        <ul class="request-list" id="alert-list">
+          <li><div><strong>EMG-2024-001</strong> · Difficulty breathing · Kakuma Block 4</div>
+            <button class="btn small danger" type="button">Acknowledge</button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= ADMIN DASHBOARD ================= -->
+    <section class="dashboard" id="admin-dashboard" aria-hidden="true">
+      <div class="dash-header">
+        <div class="dash-user">
+          <i class="fas fa-user-shield"></i>
+          <div>
+            <strong>Admin (ADM-001)</strong>
+            <span class="badge success">Authorized</span>
+          </div>
+        </div>
+        <button class="btn ghost small" data-logout="admin" type="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+      <div class="grid-buttons">
+        <button class="grid-btn" type="button"><i class="fas fa-users"></i> Registered patients · 1,284</button>
+        <button class="grid-btn" type="button"><i class="fas fa-user-check"></i> Verified refugees · 1,102</button>
+        <button class="grid-btn" type="button"><i class="fas fa-clock"></i> Pending registrations · 47</button>
+        <button class="grid-btn" type="button"><i class="fas fa-stethoscope"></i> Consultations · 3,921</button>
+        <button class="grid-btn" type="button"><i class="fas fa-prescription"></i> Active prescriptions · 512</button>
+        <button class="grid-btn" type="button"><i class="fas fa-triangle-exclamation"></i> Misconduct reports · 9</button>
+        <button class="grid-btn" type="button"><i class="fas fa-virus"></i> Outbreak alerts · 2</button>
+        <button class="grid-btn" type="button"><i class="fas fa-hand-holding-dollar"></i> Funding records · 14</button>
+      </div>
+      <p class="warning"><i class="fas fa-lock"></i> Role-based access: confidential patient records are restricted to authorized medical staff only.</p>
+    </section>
+
+    <!-- ================= NURSE / CAREGIVER PLACEHOLDER ================= -->
+    <section class="dashboard" id="nurse-dashboard" aria-hidden="true">
+      <div class="dash-header">
+        <div class="dash-user">
+          <i class="fas fa-user-nurse"></i>
+          <div>
+            <strong>Nurse (NRS-001)</strong>
+            <span class="badge success">On duty</span>
+          </div>
+        </div>
+        <button class="btn ghost small" data-logout="nurse" type="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-heart-pulse"></i> Vitals & triage</h3>
+        <p>Record vital signs for assigned patients and escalate to a doctor if needed.</p>
+        <button class="btn primary" type="button" id="nurse-vitals"><i class="fas fa-plus"></i> Record vitals</button>
+      </div>
+    </section>
+
+    <section class="dashboard" id="caregiver-dashboard" aria-hidden="true">
+      <div class="dash-header">
+        <div class="dash-user">
+          <i class="fas fa-people-roof"></i>
+          <div>
+            <strong>Caregiver (CG-2026-0091)</strong>
+            <span class="badge success">Linked</span>
+          </div>
+        </div>
+        <button class="btn ghost small" data-logout="caregiver" type="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-list-check"></i> Caregiver tasks</h3>
+        <ul class="simple-list">
+          <li><i class="fas fa-calendar-check"></i> Monitor patient appointments</li>
+          <li><i class="fas fa-pills"></i> Receive medicine reminders</li>
+          <li><i class="fas fa-house-medical"></i> Request home visits</li>
+          <li><i class="fas fa-comment-medical"></i> Communicate with healthcare workers</li>
+          <li><i class="fas fa-bell"></i> Receive emergency notifications</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <i class="fas fa-shield-heart"></i> Linda Watu · Demonstration prototype · Not an official UNHCR or WHO product
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

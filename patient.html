@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Linda Watu: Patient</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header class="top"><b>🛡️ LINDA WATU</b><span><span id="who"></span> <button class="btn ghost sm" id="out">Log out</button></span></header>
+<nav><button data-s="home">🏠 Home</button><button data-s="book">📅 Book</button><button data-s="talk">💬 Talk</button><button data-s="meds">💊 Medicines</button><button data-s="report">🚩 Report</button></nav>
+<main>
+<section id="home"><h2>How can we help?</h2><div class="grid">
+<button class="tile" data-go="book"><b>📅</b>Book a doctor</button>
+<button class="tile" data-go="talk"><b>💬</b>Talk and translate</button>
+<button class="tile" data-go="meds"><b>💊</b>My medicines</button>
+<button class="tile" data-go="report"><b>🚩</b>Report misconduct</button>
+<button class="tile red sosOpen"><b>🚨</b>Emergency</button></div>
+<p class="muted">Registration checks never delay emergency care.</p></section>
+
+<section id="book"><h2>Book a doctor or home visit</h2>
+<form class="card" id="bookF"><label>Type</label><select name="type" required><option value="">Choose…</option><option>Clinic consultation</option><option>Home visit</option></select>
+<label>Department</label><select name="dept" required><option value="">Choose…</option><option>General</option><option>Maternal and child health</option><option>Mental health</option><option>Tuberculosis and HIV</option></select>
+<label>Date</label><input type="date" name="date" id="date" required>
+<label>Time</label><input type="time" name="time" required>
+<label>What is the problem?</label><textarea name="reason" rows="3" minlength="3" required></textarea>
+<button class="btn big teal" type="submit">Send request</button></form>
+<h3>My requests</h3><div id="appts"></div></section>
+
+<section id="talk"><h2>Talk to a doctor</h2><div class="card">
+<label>My language</label><select id="lang"></select><div class="chat" id="chat"></div>
+<select id="ph"></select><textarea id="txt" rows="2" placeholder="Type or speak your message"></textarea>
+<div class="acts"><button class="btn" id="mic">🎤 Speak</button><button class="btn teal" id="send">Send</button></div></div>
+<p class="muted">AI translation can be wrong. For serious advice, ask for a human interpreter.</p></section>
+
+<section id="meds"><h2>My medicines</h2><div id="medList"></div><h3>History</h3><div id="hist"></div></section>
+
+<section id="report"><h2>Report healthcare misconduct or unauthorized payment</h2>
+<form class="card" id="repF"><label>What happened?</label><select name="kind" required><option value="">Choose…</option><option>Asked for money for a free service</option><option>Denied treatment</option><option>Discrimination</option><option>Harassment</option><option>Negligence or abuse</option></select>
+<label>Facility or place</label><input name="place" required minlength="2">
+<label>Details</label><textarea name="det" rows="4" minlength="10" required></textarea>
+<label><input type="checkbox" name="anon">Report anonymously</label>
+<small>We protect your identity, but we cannot promise absolute anonymity.</small><br><br>
+<button class="btn big teal" type="submit">Submit report</button></form>
+<h3>My cases</h3><div id="cases"></div></section>
+</main>
+
+<button class="btn red sos-fab sosOpen">🚨 EMERGENCY</button>
+<div class="modal" id="sos"><form class="card" id="sosF"><h2>Emergency help</h2>
+<p>If you are in danger, call <b>112</b> or <b>999</b> now. This app does not replace emergency services.</p>
+<label><input type="checkbox" class="sign">Difficulty breathing</label><label><input type="checkbox" class="sign">Heavy bleeding</label><label><input type="checkbox" class="sign">Unconscious or fitting</label><label><input type="checkbox" class="sign">Pregnancy emergency</label><br>
+<label>Describe what is happening</label><textarea id="sosT" rows="3"></textarea>
+<button class="btn red big" type="submit">Send emergency alert</button><button type="button" class="btn ghost big" id="sosX">Close</button><p id="sosR" role="status"></p></form></div>
+<div id="toast" class="toast"></div>
+<script src="js/common.js"></script><script src="js/patient.js"></script></body></html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Linda Watu: Doctor</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header class="top"><b>🛡️ LINDA WATU</b><span><span id="who"></span> <button class="btn ghost sm" id="out">Log out</button></span></header>
+<nav><button data-s="req">📋 Requests<i id="cR"></i></button><button data-s="talk">💬 Messages</button><button data-s="rx">💊 Prescribe</button><button data-s="sos">🚨 Emergencies<i id="cS"></i></button></nav>
+<main>
+<section id="req"><h2>Appointment and home visit requests</h2><div id="reqList"></div></section>
+
+<section id="talk"><h2>Patient messages</h2><div class="card">
+<label>Show messages in</label><select id="lang"></select><div class="chat" id="chat"></div>
+<select id="ph"></select><textarea id="txt" rows="2" placeholder="Write, speak or pick a reply"></textarea>
+<div class="acts"><button class="btn" id="mic">🎤 Speak</button><button class="btn teal" id="send">Send reply</button></div></div>
+<p class="muted">Translations are a demo aid. Do not rely on them for high-risk decisions.</p></section>
+
+<section id="rx"><h2>Write a prescription</h2>
+<form class="card" id="rxF"><label>Medicine</label><input name="name" required minlength="2">
+<label>Dosage</label><input name="dose" placeholder="e.g. 1 tablet" required>
+<label>Frequency</label><select name="freq" required><option value="">Choose…</option><option>Once a day</option><option>Twice a day</option><option>Three times a day</option></select>
+<label>First dose time</label><input type="time" name="time" required>
+<label>Duration (days)</label><input type="number" name="days" min="1" max="90" required>
+<label>Special instructions</label><textarea name="note" rows="2"></textarea>
+<button class="btn big teal" type="submit">Issue prescription</button></form>
+<h3>Issued</h3><div id="rxList"></div></section>
+
+<section id="sos"><h2>Emergency alerts</h2><div id="sosList"></div></section>
+</main>
+<div id="toast" class="toast"></div>
+<script src="js/common.js"></script><script src="js/doctor.js"></script></body></html>
